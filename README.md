@@ -1,7 +1,7 @@
 # 💬 CSS 말풍선 구현 기술의 4단계 진화사 (2019 ~ 2026)
 > **CSS 말풍선/툴팁 화살표 구현 방식별 렌더링 한계 검증 및 모던 웹 기술 발전사 인터랙티브 실험실**
 
-[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://username.github.io/repository-name/)
+[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://hong-vibe.github.io/CSS-Arrow-Test/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
 [![Pure CSS](https://img.shields.io/badge/CSS-Modern%20Clip--path-ff69b4?style=for-the-badge&logo=css3)](https://developer.mozilla.org/ko/docs/Web/CSS/clip-path)
 
@@ -116,13 +116,9 @@
 
 ---
 
-## 🌐 GitHub Pages 배포 가이드
+## 🌐 GitHub Pages 배포 링크
 
-1. 본 리포지토리를 GitHub에 푸시합니다.
-2. 리포지토리의 **Settings** > **Pages** 메뉴로 이동합니다.
-3. **Build and deployment** 항목의 **Source**를 `Deploy from a branch`로 선택합니다.
-4. **Branch**를 `main` (또는 `master`), 폴더를 `/ (root)`로 지정하고 **Save**를 클릭합니다.
-5. 1~2분 후 생성되는 URL(예: `https://<github-id>.github.io/<repo-name>/CSS-Arrow-Test.html`)로 접속하여 실시간 데모를 확인합니다.
+* **실시간 인터랙티브 데모**: [https://hong-vibe.github.io/CSS-Arrow-Test/](https://hong-vibe.github.io/CSS-Arrow-Test/)
 
 ---
 

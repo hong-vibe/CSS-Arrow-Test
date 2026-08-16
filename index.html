@@ -36,11 +36,12 @@
     .legacy-bubble {
       border: 3px solid transparent;
     }
+    /* 유저 썸네일 정중앙 Y=20px 일치 (top: 12px + 8px = 20px) */
     .legacy-bubble::before {
       content: '';
       position: absolute;
       left: -14px;
-      top: 16px;
+      top: 12px;
       width: 0;
       height: 0;
       border-style: solid;
@@ -77,11 +78,12 @@
     .rotate-bubble {
       border: 3px solid transparent;
     }
+    /* 유저 썸네일 정중앙 Y=20px 일치 (top: 10px + 10px = 20px) */
     .rotate-bubble::before {
       content: '';
       position: absolute;
       left: -7px;
-      top: 20px;
+      top: 10px;
       width: 14px;
       height: 14px;
       background-color: #e2e8f0;
@@ -91,7 +93,7 @@
       transition: all 0.3s ease;
     }
 
-    /* 2세대 토글 상태: 꼬리 2면에도 3px 핫핑크 테두리 연결 성공 */
+    /* 2세대 토글 상태: 꼬리 2면에 3px 핫핑크 테두리 연결 성공하나 본체 내부 경계를 미세 침범 */
     .has-border .rotate-bubble {
       border-color: #f43f5e;
     }
@@ -138,10 +140,11 @@
       transition: all 0.3s ease;
       box-sizing: border-box;
     }
+    /* 유저 썸네일 정중앙 Y=20px 일치 (top: 11px + 9px = 20px) */
     .svg-arrow-tail {
       position: absolute;
       left: -13px;
-      top: 17px;
+      top: 11px;
       width: 14px;
       height: 18px;
       overflow: visible;
@@ -174,7 +177,7 @@
 
 
     /* =========================================================
-       4세대: 2024~현재 단일 통합 Clip-path 기법 (절대 풀리지 않는 래퍼 절삭)
+       4세대: 2024~현재 단일 통합 Clip-path 기법 (완벽히 매끄러운 일체형 절삭)
        ========================================================= */
     .single-clip-outer {
       position: relative;
@@ -183,22 +186,28 @@
       transition: filter 0.3s ease;
     }
 
+    /* 유저 썸네일 정중앙 Y=20px 일치 및 모서리 곡면과 100% 매끄러운 융합 */
     .single-clip-wrapper {
       position: relative;
       width: 100%;
       clip-path: polygon(
+        /* 좌상단 라운드 코너 (14px 12px에서 꼬리 상단과 완벽 연결) */
         14px 12px, 16px 6px, 20px 2px, 26px 0%,
+        /* 상단 변 & 우상단 라운드 코너 */
         calc(100% - 12px) 0%, calc(100% - 4px) 3px, 100% 12px,
+        /* 우하단 라운드 코너 */
         100% calc(100% - 12px), calc(100% - 4px) calc(100% - 3px), calc(100% - 12px) 100%,
+        /* 하단 변 & 좌하단 라운드 코너 */
         26px 100%, 20px calc(100% - 2px), 16px calc(100% - 6px), 14px calc(100% - 12px),
-        14px 36px, 0px 26px, 14px 16px
+        /* 좌측 변 -> 꼬리 하단(14px 28px) -> 꼬리 끝(0px 20px) -> 꼬리 상단(14px 12px) */
+        14px 28px, 0px 20px, 14px 12px
       );
       -webkit-clip-path: polygon(
         14px 12px, 16px 6px, 20px 2px, 26px 0%,
         calc(100% - 12px) 0%, calc(100% - 4px) 3px, 100% 12px,
         100% calc(100% - 12px), calc(100% - 4px) calc(100% - 3px), calc(100% - 12px) 100%,
         26px 100%, 20px calc(100% - 2px), 16px calc(100% - 6px), 14px calc(100% - 12px),
-        14px 36px, 0px 26px, 14px 16px
+        14px 28px, 0px 20px, 14px 12px
       );
       transform: translate3d(0, 0, 0);
     }
@@ -263,23 +272,18 @@
         <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
         CSS Evolution Chronicle (2019 - 2026)
       </div>
-      <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white">
+      <h1 class="text-xl md:text-3xl font-extrabold tracking-tight text-white">
         CSS 말풍선 구현 기술의 <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-indigo-300 to-pink-400">4단계 세대별 진화사</span>
       </h1>
-      <p class="text-sm text-slate-400 max-w-3xl mx-auto">
-        2019년 레거시 Border 트릭의 한계부터 최신 단일 Clip-path 다각형 통합 기법까지, 세대가 발전하며 이전 기술의 결함이 어떻게 1개씩 극복되었는지 3대 핵심 실험을 통해 확인해보세요.
-      </p>
     </header>
 
     <!-- 3대 핵심 실험 토글 컨트롤러 -->
     <section class="bg-slate-800/80 border border-slate-700/80 p-5 rounded-2xl shadow-xl backdrop-blur-md">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-            <span>🧪 기술 한계 검증 실험실</span>
-            <span class="text-[11px] text-slate-500 font-normal">(복수 선택 가능)</span>
+          <h2 class="text-base md:text-lg lg:text-xl font-black text-slate-100 flex items-center gap-2">
+            <span>🧪 버튼을 클릭하여 세대별 기능을 비교해보세요</span>
           </h2>
-          <p class="text-xs text-slate-300 mt-1">버튼을 클릭하여 각 세대별 렌더링 결함과 극복 과정을 확인하세요.</p>
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
@@ -332,7 +336,7 @@
 
           <!-- 상태 뱃지 목록 (높이 48px 고정) -->
           <div class="h-[48px] flex flex-wrap content-start gap-1.5 mb-3 text-[10px]">
-            <span class="px-2 py-0.5 rounded bg-slate-900/80 text-rose-400 border border-slate-700 font-medium">테두리: ❌ 꼬리 누락 (벽 생성)</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900/80 text-rose-400 border border-slate-700 font-medium">테두리: ❌ 꼬리 누락</span>
             <span class="px-2 py-0.5 rounded bg-slate-900/80 text-rose-400 border border-slate-700 font-medium">반투명: ❌ 트릭 붕괴</span>
             <span class="px-2 py-0.5 rounded bg-slate-900/80 text-rose-400 border border-slate-700 font-medium">그라데이션: ❌ 단절</span>
           </div>
@@ -359,6 +363,7 @@
             <span class="text-[10px] text-amber-400 font-normal">가상요소 1개</span>
           </p>
           <pre class="code-box"><code>.legacy-bubble::before {
+  top: 12px;
   width: 0; height: 0;
   border-style: solid;
   border-width: 8px 14px 8px 0;
@@ -389,7 +394,7 @@
 
           <!-- 상태 뱃지 목록 (높이 48px 고정) -->
           <div class="h-[48px] flex flex-wrap content-start gap-1.5 mb-3 text-[10px]">
-            <span class="px-2 py-0.5 rounded bg-rose-950/40 text-rose-300 border border-rose-800/50 font-medium">테두리: ⭕ 핑크 연결 성공!</span>
+            <span class="px-2 py-0.5 rounded bg-amber-950/40 text-amber-300 border border-amber-800/50 font-medium">테두리: 🔺 내부 침범</span>
             <span class="px-2 py-0.5 rounded bg-slate-900/80 text-rose-400 border border-slate-700 font-medium">반투명: ❌ 내부 침범</span>
             <span class="px-2 py-0.5 rounded bg-slate-900/80 text-rose-400 border border-slate-700 font-medium">그라데이션: ❌ 단절</span>
           </div>
@@ -402,7 +407,7 @@
               <div id="bubble-2" class="bubble-base rotate-bubble">
                 <p class="text-xs md:text-sm leading-relaxed">
                   <strong>[원리 및 한계]</strong><br>
-                  정사각형을 45도 회전시켜 <strong>핑크 테두리 연결은 완벽 해결</strong>했으나, 마름모 절반이 본체 안쪽에 파묻혀 있어 <strong>반투명 유리 적용 시 본체 안에 사각형 잔상이 흉하게 비칩니다.</strong>
+                  정사각형을 45도 회전시켜 꼬리 테두리 연결은 성공했으나, <strong>테두리 선이 본체 내부 경계를 미세하게 침범(🔺)</strong>하며 반투명 유리 시 사각형 잔상이 비칩니다.
                 </p>
               </div>
             </div>
@@ -416,6 +421,7 @@
             <span class="text-[10px] text-emerald-400 font-normal">Rotate 45deg</span>
           </p>
           <pre class="code-box"><code>.rotate-bubble::before {
+  top: 10px;
   width: 14px; height: 14px;
   background-color: #e2e8f0;
   transform: rotate(45deg);
@@ -479,7 +485,7 @@
             <span class="text-[10px] text-sky-400 font-normal">SVG + Filter</span>
           </p>
           <pre class="code-box"><code>&lt;!-- SVG 독립 꼬리 삽입 --&gt;
-&lt;svg class="absolute -left-3 top-3 w-3.5 h-4"&gt;
+&lt;svg class="absolute -left-3 top-[11px] w-3.5 h-4"&gt;
   &lt;path d="M 14 0 L 0 9 L 14 18 Z"/&gt;
 &lt;/svg&gt;
 .svg-wrapper { filter: drop-shadow(...); }</code></pre>
@@ -538,10 +544,11 @@
             <span class="text-[10px] text-pink-400 font-normal">단일 태그 곡면 다각형</span>
           </p>
           <pre class="code-box"><code>.single-clip-bubble {
-  /* 4개 모서리 곡률 + 꼬리 통합 절삭 */
+  /* 4개 모서리 라운드(12px) + 꼬리(Y=20px) 일체형 절삭 */
   clip-path: polygon(
     14px 12px, 16px 6px, 20px 2px, 26px 0%,
     calc(100% - 12px) 0%, 100% 12px, ...
+    14px 28px, 0px 20px, 14px 12px
   );
 }</code></pre>
         </div>
@@ -568,8 +575,8 @@
           <tbody class="divide-y divide-slate-700/50 text-slate-300">
             <tr>
               <td class="py-2.5 px-3 font-medium text-slate-200">💖 네온 핫핑크 테두리 (3px)</td>
-              <td class="py-2.5 px-3 text-rose-400 font-medium">❌ 꼬리 누락 (테두리 벽 생성)</td>
-              <td class="py-2.5 px-3 text-rose-400 font-medium">⭕ 순수 Border 성공</td>
+              <td class="py-2.5 px-3 text-rose-400 font-medium">❌ 꼬리 누락</td>
+              <td class="py-2.5 px-3 text-amber-300 font-medium">🔺 내부 침범</td>
               <td class="py-2.5 px-3 text-rose-400 font-medium">⭕ Drop-shadow 필터 성공</td>
               <td class="py-2.5 px-3 text-rose-400 font-bold">⭕ 완벽 일체형 테두리</td>
             </tr>
